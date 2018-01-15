@@ -46,7 +46,7 @@ namespace Sample001
             {
                 // スキャン停止
                 scanPage.IsScanning = false;
-
+                
                 // PopAsyncで元のページに戻り、結果をダイアログで表示
                 Device.BeginInvokeOnMainThread(async () =>
                 {
