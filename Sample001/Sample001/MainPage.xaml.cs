@@ -96,50 +96,40 @@ namespace Sample001
                     //結果を出力
                     foreach (JObject jobj in Items)
                     {
-                        await DisplayAlert("ライドォ","1", "OK");
                         //↓のように取り出す
                         JValue titleValue = (JValue)jobj["title"];
-                        await DisplayAlert("ライドォ", "2", "OK");
                         string title = (string)titleValue.Value;
-                        await DisplayAlert("ライドォ", "3", "OK");
-
+                        
                         JValue titleKanaValue = (JValue)jobj["titleKana"];
-                        await DisplayAlert("ライドォ", "4", "OK");
                         string titleKana = (string)titleKanaValue.Value;
-                        await DisplayAlert("ライドォ", "5", "OK");
-
+                       
                         JValue itemCaptionValue = (JValue)jobj["itemCaption"];
-                        await DisplayAlert("ライドォ", "6", "OK");
                         string itemCaption = (string)itemCaptionValue.Value;
-                        await DisplayAlert("ライドォ", "7", "OK");
-
+                        
                         JValue gazoValue = (JValue)jobj["largeImageUrl"];
-                        await DisplayAlert("ライドォ", "8", "OK");
                         string gazo = (string)gazoValue.Value;
-                        await DisplayAlert("ライドォ", "9", "OK");
 
                         //書き出し
                         layout.Children.Add(new Label { Text = $"title: { title }" });
                         layout.Children.Add(new Label { Text = $"titleKana: { titleKana }" });
                         layout.Children.Add(new Label { Text = $"itemCaption: { itemCaption }" });
                         layout.Children.Add(new Image { Source = gazo });
-                        String A = gazo;
-                        await DisplayAlert("ライドォ", "end", "OK");
+                        String A = gazo;                        
                     };
-
+                    await DisplayAlert("asa1", "hiru", "yoru");
                     layout.Children.Add(new Label { Text = "読み取り終了", TextColor = Color.Black });
+                    await DisplayAlert("asa2", "hiru", "yoru");
 
                     layout.Children.Add(new Label { Text = "" });//改行
-
+                    await DisplayAlert("asa3", "hiru", "yoru");
                     layout.Children.Add(new Label { Text = "JSON形式で書き出す", TextColor = Color.Red });
+                    await DisplayAlert("asa4", "hiru", "yoru");
                     layout.Children.Add(new Label { Text = json.ToString() });
-
-
-
-
+                    await DisplayAlert("asa5", "hiru", "yoru");
                     Content = layout2;
-
+                    
                 };
+
             }
             catch (Exception e)
             {
