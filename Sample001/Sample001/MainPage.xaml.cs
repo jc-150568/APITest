@@ -91,7 +91,7 @@ namespace Sample001
                     //パースする *重要*   パースとは、文法に従って分析する、品詞を記述する、構文解析する、などの意味を持つ英単語。
                     var json = JObject.Parse(APIdata); //stringのAPIdataをJObjectにパース
                     var Items = JArray.Parse(json["Items"].ToString()); //Itemsは配列なのでJArrayにパース
-                    await DisplayAlert("ライドォ", Items.ToString(), "OK");
+                   
                     //ここまで来てる---------------------
                     //結果を出力
                     foreach (JObject jobj in Items)
