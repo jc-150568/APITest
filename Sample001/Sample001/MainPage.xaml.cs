@@ -35,6 +35,11 @@ namespace Sample001
         {
             try
             {
+                var layout2 = new StackLayout { HorizontalOptions = LayoutOptions.CenterAndExpand, VerticalOptions = LayoutOptions.CenterAndExpand };
+                var scroll = new ScrollView { Orientation = ScrollOrientation.Vertical };
+                layout2.Children.Add(scroll);
+                var layout = new StackLayout { HorizontalOptions = LayoutOptions.CenterAndExpand, VerticalOptions = LayoutOptions.CenterAndExpand };
+                scroll.Content = layout;
                 var scanPage = new ZXingScannerPage()
                 {
                     DefaultOverlayTopText = "バーコードを読み取ります",
@@ -60,11 +65,7 @@ namespace Sample001
 
                     requestUrl = url + "&isbn=" + isbncode; //URLにISBNコードを挿入
 
-                    var layout2 = new StackLayout { HorizontalOptions = LayoutOptions.CenterAndExpand, VerticalOptions = LayoutOptions.CenterAndExpand };
-                    var scroll = new ScrollView { Orientation = ScrollOrientation.Vertical };
-                    layout2.Children.Add(scroll);
-                    var layout = new StackLayout { HorizontalOptions = LayoutOptions.CenterAndExpand, VerticalOptions = LayoutOptions.CenterAndExpand };
-                    scroll.Content = layout;
+                    
 
                     //HTTPアクセスメソッドを呼び出す
                     string APIdata = await GetApiAsync(); //jsonをstringで受け取る
@@ -116,20 +117,20 @@ namespace Sample001
                         layout.Children.Add(new Image { Source = gazo });
                         String A = gazo;                        
                     };
-                    await DisplayAlert("asa1", "hiru", "yoru");
+                    
                     layout.Children.Add(new Label { Text = "読み取り終了", TextColor = Color.Black });
-                    await DisplayAlert("asa2", "hiru", "yoru");
+                    
 
                     layout.Children.Add(new Label { Text = "" });//改行
-                    await DisplayAlert("asa3", "hiru", "yoru");
+                    
                     layout.Children.Add(new Label { Text = "JSON形式で書き出す", TextColor = Color.Red });
-                    await DisplayAlert("asa4", "hiru", "yoru");
+                    
                     layout.Children.Add(new Label { Text = json.ToString() });
-                    await DisplayAlert("asa5", "hiru", "yoru");
-                    Content = layout2;
+                    
+
                     
                 };
-
+                Content = layout2;
             }
             catch (Exception e)
             {
