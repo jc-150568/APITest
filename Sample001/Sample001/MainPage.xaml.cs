@@ -55,22 +55,35 @@ namespace Sample001
                             await Navigation.PopAsync();
                         // await DisplayAlert("スキャン完了", result.Text, "OK");
                     });
+
+                    await DisplayAlert("ライドォ", "1", "OK");
+
                     string isbncode = result.Text;
+
+                    await DisplayAlert("ライドォ", "2", "OK");
+
                     requestUrl = url + "&isbn=" + isbncode; //URLにISBNコードを挿入
+
+                    await DisplayAlert("ライドォ", "3", "OK");
+
                     var layout2 = new StackLayout { HorizontalOptions = LayoutOptions.CenterAndExpand, VerticalOptions = LayoutOptions.CenterAndExpand };
                     var scroll = new ScrollView { Orientation = ScrollOrientation.Vertical };
                     layout2.Children.Add(scroll);
                     var layout = new StackLayout { HorizontalOptions = LayoutOptions.CenterAndExpand, VerticalOptions = LayoutOptions.CenterAndExpand };
                     scroll.Content = layout;
 
+                    await DisplayAlert("ライドォ", "4", "OK");
+
                     //HTTPアクセスメソッドを呼び出す
                     string APIdata = await GetApiAsync(); //jsonをstringで受け取る
 
+                    await DisplayAlert("ライドォ", "5", "OK");
                     //HTTPアクセス失敗処理(404エラーとか名前解決失敗とかタイムアウトとか)
                     if (APIdata is null)
                     {
                         await DisplayAlert("接続エラー", "接続に失敗しました", "OK");
                     }
+                    await DisplayAlert("ライドォ", "6", "OK");
 
                     /*
                     //レスポンス(JSON)をstringに変換-------------->しなくていい
