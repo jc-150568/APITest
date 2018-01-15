@@ -56,15 +56,9 @@ namespace Sample001
                         // await DisplayAlert("スキャン完了", result.Text, "OK");
                     });
 
-                    await DisplayAlert("ライドォ", "1", "OK");
-
                     string isbncode = result.Text;
 
-                    await DisplayAlert("ライドォ", "2", "OK");
-
                     requestUrl = url + "&isbn=" + isbncode; //URLにISBNコードを挿入
-
-                    await DisplayAlert("ライドォ", "3", "OK");
 
                     var layout2 = new StackLayout { HorizontalOptions = LayoutOptions.CenterAndExpand, VerticalOptions = LayoutOptions.CenterAndExpand };
                     var scroll = new ScrollView { Orientation = ScrollOrientation.Vertical };
@@ -72,18 +66,16 @@ namespace Sample001
                     var layout = new StackLayout { HorizontalOptions = LayoutOptions.CenterAndExpand, VerticalOptions = LayoutOptions.CenterAndExpand };
                     scroll.Content = layout;
 
-                    await DisplayAlert("ライドォ", "4", "OK");
-
                     //HTTPアクセスメソッドを呼び出す
                     string APIdata = await GetApiAsync(); //jsonをstringで受け取る
 
-                    await DisplayAlert("ライドォ", "5", "OK");
                     //HTTPアクセス失敗処理(404エラーとか名前解決失敗とかタイムアウトとか)
                     if (APIdata is null)
                     {
                         await DisplayAlert("接続エラー", "接続に失敗しました", "OK");
                     }
-                    await DisplayAlert("ライドォ", "6", "OK");
+                    await DisplayAlert("ライドォ", requestUrl, "OK");
+                    //ここまで来てる---------------------
 
                     /*
                     //レスポンス(JSON)をstringに変換-------------->しなくていい
@@ -98,8 +90,9 @@ namespace Sample001
 
                     //パースする *重要*   パースとは、文法に従って分析する、品詞を記述する、構文解析する、などの意味を持つ英単語。
                     var json = JObject.Parse(APIdata); //stringのAPIdataをJObjectにパース
+                    await DisplayAlert("ライドォ", requestUrl, "OK");
                     var Items = JArray.Parse(json["Items"].ToString()); //Itemsは配列なのでJArrayにパース
-
+                    await DisplayAlert("ライドォ", requestUrl, "OK");
                     //結果を出力
                     foreach (JObject jobj in Items)
                     {
