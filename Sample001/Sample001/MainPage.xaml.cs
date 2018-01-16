@@ -35,11 +35,6 @@ namespace Sample001
         {
             try
             {
-                var layout2 = new StackLayout { HorizontalOptions = LayoutOptions.CenterAndExpand, VerticalOptions = LayoutOptions.CenterAndExpand };
-                var scroll = new ScrollView { Orientation = ScrollOrientation.Vertical };
-                layout2.Children.Add(scroll);
-                var layout = new StackLayout { HorizontalOptions = LayoutOptions.CenterAndExpand, VerticalOptions = LayoutOptions.CenterAndExpand };
-                scroll.Content = layout;
                 var scanPage = new ZXingScannerPage()
                 {
                     DefaultOverlayTopText = "バーコードを読み取ります",
@@ -110,27 +105,30 @@ namespace Sample001
                         JValue gazoValue = (JValue)jobj["largeImageUrl"];
                         string gazo = (string)gazoValue.Value;
 
-                        //書き出し
+                        /*//書き出し
                         layout.Children.Add(new Label { Text = $"title: { title }" });
                         layout.Children.Add(new Label { Text = $"titleKana: { titleKana }" });
                         layout.Children.Add(new Label { Text = $"itemCaption: { itemCaption }" });
                         layout.Children.Add(new Image { Source = gazo });
-                        String A = gazo;                        
+                        String A = gazo; */
+
+                        BookDB.insertUser(isbncode, title, titleKana,itemCaption);
+
                     };
                     
-                    layout.Children.Add(new Label { Text = "読み取り終了", TextColor = Color.Black });
+                    /*layout.Children.Add(new Label { Text = "読み取り終了", TextColor = Color.Black });
                     
 
                     layout.Children.Add(new Label { Text = "" });//改行
                     
                     layout.Children.Add(new Label { Text = "JSON形式で書き出す", TextColor = Color.Red });
                     
-                    layout.Children.Add(new Label { Text = json.ToString() });
+                    layout.Children.Add(new Label { Text = json.ToString() });*/
                     
 
                     
                 };
-                Content = layout2;
+                
             }
             catch (Exception e)
             {
@@ -157,6 +155,26 @@ namespace Sample001
                     string a = e.ToString();
                     return null;
                 }
+        }
+
+        private void Hyouji()
+        {
+            var layout2 = new StackLayout { HorizontalOptions = LayoutOptions.CenterAndExpand, VerticalOptions = LayoutOptions.CenterAndExpand };
+            var scroll = new ScrollView { Orientation = ScrollOrientation.Vertical };
+            layout2.Children.Add(scroll);
+            var layout = new StackLayout { HorizontalOptions = LayoutOptions.CenterAndExpand, VerticalOptions = LayoutOptions.CenterAndExpand };
+            scroll.Content = layout;
+
+            var query = BookDB.selectUser();
+            foreach(var book in query)
+            {
+                layout.Children.Add(new Label { Text = book.ISBN });
+                layout.Children.Add(new Label {Text = book.Title });
+                layout.Children.Add(new Label { Text = book.TitleKana });
+                layout.Children.Add(new Label { Text = book.ItemCaption });
+            }
+
+            Content = layout2;
         }
 
     }

@@ -9,14 +9,24 @@ namespace Sample001
 {
 	public partial class App : Application
 	{
-		public App ()
-		{
-			InitializeComponent();
+        public static string dbPath;
+        public App(string dbPath)
+        {
+
+            //AppのdbPathに引数のパスを設定します
+            App.dbPath = dbPath;
+            InitializeComponent();
+            MainPage = new Sample001.MainPage();
+
+        }
+        public App()
+        {
+            InitializeComponent();
 
             MainPage = new NavigationPage(new MainPage());
         }
 
-		protected override void OnStart ()
+        protected override void OnStart ()
 		{
 			// Handle when your app starts
 		}
