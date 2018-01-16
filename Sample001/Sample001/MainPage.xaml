@@ -4,7 +4,12 @@
              x:Class="Sample001.MainPage"
              Title="MainPage">
     <StackLayout Padding="10">
-        <Button Text="Scan" Clicked="ScanButtonClicked" />
+        <Button Text="Scan" Clicked="ScanButtonClicked" 
+                HorizontalOptions="Center"
+                VerticalOptions="CenterAndExpand" />
         <!--<ListView ItemsSource="{Binding}" VerticalOptions="FillAndExpand"/>-->
+        <Button Text="Indicate!" Clicked="Hyouji"
+                HorizontalOptions="Center"
+                VerticalOptions="CenterAndExpand" />
     </StackLayout>
 </ContentPage>
