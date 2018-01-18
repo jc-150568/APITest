@@ -16,14 +16,18 @@ namespace Sample001
             //AppのdbPathに引数のパスを設定します
             App.dbPath = dbPath;
             InitializeComponent();
-            MainPage = new Sample001.MainPage();
-
+            MainPage = new NavigationPage
+            {
+                BindingContext = new MainPage(),
+            };
         }
         public App()
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainPage());
+            MainPage = new NavigationPage{
+                BindingContext = new MainPage(),
+            };
         }
 
         protected override void OnStart ()
