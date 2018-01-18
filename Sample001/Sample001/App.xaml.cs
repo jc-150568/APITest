@@ -18,7 +18,7 @@ namespace Sample001
             InitializeComponent();
             MainPage = new NavigationPage
             {
-                BindingContext = new MainPage(),
+                BindingContext = new MainPageViewModel(),
             };
         }
         public App()
@@ -26,7 +26,7 @@ namespace Sample001
             InitializeComponent();
 
             MainPage = new NavigationPage{
-                BindingContext = new MainPage(),
+                BindingContext = new MainPageViewModel(),
             };
         }
 
