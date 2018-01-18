@@ -1,21 +1,15 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Sample001.MainPage">
-    <ContentPage.Content>
-        <!-- IsRefreshingプロパティに双方向でバインドするのがミソ -->
-        <ListView IsPullToRefreshEnabled="true"
-                  SeparatorVisibility="None"
-                  RefreshCommand="{Binding RefreshCommand}"
-                  IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
-                  ItemsSource="{Binding Colors}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <BoxView Color="{Binding}"/>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </ContentPage.Content>
+             x:Class="Sample001.MainPage"
+             Title="MainPage">
+    <StackLayout Padding="10">
+        <Button Text="Scan" Clicked="ScanButtonClicked" 
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand" />
+        <!--<ListView ItemsSource="{Binding}" VerticalOptions="FillAndExpand"/>-->
+        <Button Text="Indicate!" Clicked="Hyouji"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand" />
+    </StackLayout>
 </ContentPage>
